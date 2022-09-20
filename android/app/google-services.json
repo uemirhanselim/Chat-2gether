@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "89254989384",
+    "project_id": "chat-2gether",
+    "storage_bucket": "chat-2gether.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89254989384:android:af55d684c9761ae726d27d",
+        "android_client_info": {
+          "package_name": "com.example.chat_2gether"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89254989384-78obc4fbduc83gj9s8slj3nlago1qdl9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP-VEzgEi8FHteUPMG_Ggiq1nY0OWK-Dc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89254989384-78obc4fbduc83gj9s8slj3nlago1qdl9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "89254989384-prnpbbe0il8pcuagu239qj3cvoqjc7tc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chat2gether"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
