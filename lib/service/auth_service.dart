@@ -1,13 +1,17 @@
 import 'package:chat_2gether/view/home_view.dart';
-import 'package:chat_2gether/view/login_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class GoogleAuthService {
+import '../view/login_view.dart';
+
+class AuthService {
+  final FirebaseAuth authInstance = FirebaseAuth.instance;
+
+  //* Checks if user logged in or logged out
   handleAuthState() {
     return StreamBuilder(
-      stream: FirebaseAuth.instance.authStateChanges(),
+      stream: authInstance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return const HomeView();
@@ -18,6 +22,19 @@ class GoogleAuthService {
     );
   }
 
+  //* Sign Up with email and password
+  signUpWithEmailAndPassword(String email, String password) async {
+    await authInstance.createUserWithEmailAndPassword(
+        email: email, password: password);
+  }
+
+  //* Sign in with email and password
+  signInWithEmailAndPassword(String email, String password) async {
+    await authInstance.signInWithEmailAndPassword(
+        email: email, password: password);
+  }
+
+  //* Sign in with google
   signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser =
@@ -34,10 +51,11 @@ class GoogleAuthService {
     );
 
     // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    return await authInstance.signInWithCredential(credential);
   }
 
+  //* Sign out
   signOut() {
-    FirebaseAuth.instance.signOut();
+    authInstance.signOut();
   }
 }
