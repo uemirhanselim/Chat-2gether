@@ -39,10 +39,21 @@ class LoginViewState extends State<LoginView> {
                   const SizedBox(height: 30),
                   ProjectAuthButton(
                     isLogin: true,
-                    onPressed: () {},
+                    onPressed: () {
+                      context
+                          .read<LoginViewModel>()
+                          .navigateToRegister(context);
+                    },
                   ),
                   const SizedBox(height: 20),
-                  const ProjectAuthText(isLogin: true),
+                  ProjectAuthText(
+                    isLogin: true,
+                    onTap: () {
+                      context
+                          .read<LoginViewModel>()
+                          .navigateToRegister(context);
+                    },
+                  ),
                 ],
               ),
             ),
