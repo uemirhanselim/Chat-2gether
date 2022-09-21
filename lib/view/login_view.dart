@@ -37,28 +37,32 @@ class LoginViewState extends State<LoginView> {
                   ProjectTextField(
                       controller: passwordController, isEmail: false),
                   const SizedBox(height: 30),
-                  ProjectAuthButton(
-                    isLogin: true,
-                    onPressed: () {
-                      context
-                          .read<LoginViewModel>()
-                          .navigateToRegister(context);
-                    },
-                  ),
+                  _authButton(context),
                   const SizedBox(height: 20),
-                  ProjectAuthText(
-                    isLogin: true,
-                    onTap: () {
-                      context
-                          .read<LoginViewModel>()
-                          .navigateToRegister(context);
-                    },
-                  ),
+                  _authText(context),
                 ],
               ),
             ),
           ),
         );
+      },
+    );
+  }
+
+  ProjectAuthText _authText(BuildContext context) {
+    return ProjectAuthText(
+      isLogin: true,
+      onTap: () {
+        context.read<LoginViewModel>().navigateToRegister(context);
+      },
+    );
+  }
+
+  ProjectAuthButton _authButton(BuildContext context) {
+    return ProjectAuthButton(
+      isLogin: true,
+      onPressed: () {
+        context.read<LoginViewModel>().navigateToRegister(context);
       },
     );
   }

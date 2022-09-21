@@ -39,14 +39,7 @@ class RegisterViewState extends State<RegisterView> {
                   const SizedBox(height: 30),
                   _authButton(context),
                   const SizedBox(height: 20),
-                  ProjectAuthText(
-                    isLogin: false,
-                    onTap: () {
-                      context
-                          .read<RegisterViewModel>()
-                          .navigateToLogin(context);
-                    },
-                  ),
+                  _authText(context),
                 ],
               ),
             ),
@@ -54,6 +47,17 @@ class RegisterViewState extends State<RegisterView> {
         );
       },
     );
+  }
+
+  ProjectAuthText _authText(BuildContext context) {
+    return ProjectAuthText(
+                  isLogin: false,
+                  onTap: () {
+                    context
+                        .read<RegisterViewModel>()
+                        .navigateToLogin(context);
+                  },
+                );
   }
 
   Widget _authButton(BuildContext context) {
