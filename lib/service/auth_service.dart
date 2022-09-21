@@ -5,10 +5,19 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../view/login_view.dart';
 
-class AuthService {
+abstract class IAuthService {
+  handleAuthState();
+  Future<void> signUpWithEmailAndPassword(String email, String password);
+  Future<void> signInWithEmailAndPassword(String email, String password);
+  Future<UserCredential> signInWithGoogle();
+  signOut();
+}
+
+class AuthService extends IAuthService {
   final FirebaseAuth authInstance = FirebaseAuth.instance;
 
   //* Checks if user logged in or logged out
+  @override
   handleAuthState() {
     return StreamBuilder(
       stream: authInstance.authStateChanges(),
@@ -23,19 +32,22 @@ class AuthService {
   }
 
   //* Sign Up with email and password
-  signUpWithEmailAndPassword(String email, String password) async {
+  @override
+  Future<void> signUpWithEmailAndPassword(String email, String password) async {
     await authInstance.createUserWithEmailAndPassword(
         email: email, password: password);
   }
 
   //* Sign in with email and password
-  signInWithEmailAndPassword(String email, String password) async {
+  @override
+  Future<void> signInWithEmailAndPassword(String email, String password) async {
     await authInstance.signInWithEmailAndPassword(
         email: email, password: password);
   }
 
   //* Sign in with google
-  signInWithGoogle() async {
+  @override
+  Future<UserCredential> signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser =
         await GoogleSignIn(scopes: <String>["email"]).signIn();
@@ -55,6 +67,7 @@ class AuthService {
   }
 
   //* Sign out
+  @override
   signOut() {
     authInstance.signOut();
   }

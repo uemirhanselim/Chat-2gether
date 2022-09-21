@@ -6,7 +6,10 @@ class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRect(
-      child: Image.asset("assets/logo.png"),
+      child: Image.asset(
+        "assets/logo.png",
+        scale: 5,
+      ),
     );
   }
 }

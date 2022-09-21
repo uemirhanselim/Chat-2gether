@@ -1,5 +1,5 @@
 import 'package:chat_2gether/firebase_options.dart';
-import 'package:chat_2gether/view/login_view.dart';
+import 'package:chat_2gether/view/register_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginView(),
+      home: const RegisterView(),
     );
   }
 }
