@@ -17,6 +17,7 @@ class RegisterView extends StatefulWidget {
 class RegisterViewState extends State<RegisterView> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailContoller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -51,13 +52,11 @@ class RegisterViewState extends State<RegisterView> {
 
   ProjectAuthText _authText(BuildContext context) {
     return ProjectAuthText(
-                  isLogin: false,
-                  onTap: () {
-                    context
-                        .read<RegisterViewModel>()
-                        .navigateToLogin(context);
-                  },
-                );
+      isLogin: false,
+      onTap: () {
+        context.read<RegisterViewModel>().navigateToLogin(context);
+      },
+    );
   }
 
   Widget _authButton(BuildContext context) {
