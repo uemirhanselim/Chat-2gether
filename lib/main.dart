@@ -1,9 +1,7 @@
 import 'package:chat_2gether/firebase_options.dart';
 import 'package:chat_2gether/view/auth/login_view.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:device_preview/device_preview.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +19,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Chat2Gether',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
