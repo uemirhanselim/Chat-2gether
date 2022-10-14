@@ -1,5 +1,5 @@
 import 'package:chat_2gether/service/auth_service.dart';
-import 'package:chat_2gether/view/register_view.dart';
+import 'package:chat_2gether/view/auth/register_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

@@ -1,26 +1,27 @@
-import 'package:chat_2gether/model_view/login_view_model.dart';
+import 'package:chat_2gether/model_view/register_view_model.dart';
 import 'package:chat_2gether/service/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../utils/app_logo.dart';
-import '../utils/widgets/project_auth_button.dart';
-import '../utils/widgets/project_auth_text.dart';
-import '../utils/widgets/project_text_field.dart';
+import '../../utils/app_logo.dart';
+import '../../utils/widgets/project_auth_button.dart';
+import '../../utils/widgets/project_auth_text.dart';
+import '../../utils/widgets/project_text_field.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+class RegisterView extends StatefulWidget {
+  const RegisterView({Key? key}) : super(key: key);
   @override
-  State<LoginView> createState() => LoginViewState();
+  State<RegisterView> createState() => RegisterViewState();
 }
 
-class LoginViewState extends State<LoginView> {
+class RegisterViewState extends State<RegisterView> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController emailContoller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => LoginViewModel(AuthService()),
+      create: (context) => RegisterViewModel(AuthService()),
       builder: (context, child) {
         return Scaffold(
           backgroundColor: const Color.fromARGB(255, 81, 118, 148),
@@ -51,18 +52,19 @@ class LoginViewState extends State<LoginView> {
 
   ProjectAuthText _authText(BuildContext context) {
     return ProjectAuthText(
-      isLogin: true,
+      isLogin: false,
       onTap: () {
-        context.read<LoginViewModel>().navigateToRegister(context);
+        context.read<RegisterViewModel>().navigateToLogin(context);
       },
     );
   }
 
-  ProjectAuthButton _authButton(BuildContext context) {
+  Widget _authButton(BuildContext context) {
     return ProjectAuthButton(
-      isLogin: true,
-      onPressed: () {
-        context.read<LoginViewModel>().navigateToRegister(context);
+      isLogin: false,
+      onPressed: () async {
+        await context.read<RegisterViewModel>().signUpWithEmailAndPassword(
+            emailContoller.text, passwordController.text);
       },
     );
   }

@@ -1,5 +1,5 @@
 import 'package:chat_2gether/service/auth_service.dart';
-import 'package:chat_2gether/view/login_view.dart';
+import 'package:chat_2gether/view/auth/login_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

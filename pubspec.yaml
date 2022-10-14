@@ -39,6 +39,7 @@ dependencies:
   google_sign_in: ^5.4.1
   kartal: ^2.4.3
   provider: ^6.0.3
+  flutter_screenutil:
 
 dev_dependencies:
   flutter_lints: ^2.0.0
